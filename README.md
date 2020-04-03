@@ -11,7 +11,7 @@ process started by a signal to LLBN encoding the desired displacement of the sac
 Due to the disinhibition of the EBN via the OPN and the direct excitation, the EBN themselves begin to burst. The activity of the EBN is not only passed to the motor neurons
 but also directed to the IBN, which upon activation inhibit the LLBN. Due to the absence of inhibition the OPN become active again and deactivate the EBN.
 This leads to a reset of the circuit to a state qualitatively identical to the initial one.  
-The interconnections between the four populations are schematically depicted below.  
+The interconnections between the four populations are schematically depicted below:  
 ![](figures/burst_generator.png)  
 This fundamental building block takes responsibility for the movement of the eyes in **one** direction, e.g. horizontally left or vertically downwards.
 To build a complete saccade generator, one first patches together two of these fundamental building blocks collapsing the two OPN populations into one, thereby obtaining a saccade generator
@@ -23,7 +23,7 @@ The IBN consist of one interconnected population of inhibitory multi-timescale a
 The provided network satisfies Dale's principle and qualitatively takes different neuron characteristics (the distinction between bursting
 and non-bursting neurons) found in the reticular formation into account.
 Our model differs from the one described by Gancarz and Grossberg in the respect that they model the saccade generator with neural populations, i.e. they represent the network with a system of coupled differential equations where each populations is described via on of these equation.
-Our network, however, is more biologically plausible since it operates with spiking neurons which not only satify Dale's principle
+Our network, however, is more biologically plausible since it operates with spiking neurons which not only satisfy Dale's principle
 but also exhibit bursty dynamics, motivated by the neurons found in the saccade generator.
 All simulations were carried out with NEST 2.18 using the pynest interface (Jordan, Jakob et al. (2019). NEST 2.18.0. Zenodo. 10.5281/zenodo.2605422.).
 ## Results
@@ -37,7 +37,7 @@ Building a complete saccade generator, one obtains the following:
 This shows the functionality of our spiking network model of the saccade generator.
 
 ## Usage
-In order to use the saccade generator one needs to first add the base directory to your PYTHONPATH. If you are in the base directory of the spiking saccade generator just execute
+In order to use the saccade generator one needs to first add the base directory to ones PYTHONPATH. If one in the base directory of the spiking saccade generator (on a unixoid system), one just needs to execute
 ```
 export PYTHONPATH=$PWD:$PYTHONPATH
 ```
@@ -68,11 +68,11 @@ right_ebn = horizontal_sg['EBN_r']
 up_ebn = vertical_sg['EBN_u']
 down_ebn = vertical_sg['EBN_d']
 ```
-In order to perform a saccade from the point (0,0) to (0.7,-0.2) one needs to first provide the saccade generator with the proper input:
+In order to perform a saccade from the point (0,0) to (0.7,-0.2), where the maximal saccade size is 1.3 one needs to first provide the saccade generator with the proper input and then determine the readout from the recorded activity of the EBN:
 ```
 # determine amplitude size of stimulation
-amplitude_right = stim_amp(0.7)
-amplitude_down = stim_amp(0.2)
+amplitude_right = stim_amp(0.7, 1.3)
+amplitude_down = stim_amp(0.2, 1.3)
 
 # define start time and duration of stimulation
 stim_time = 2000.
@@ -108,17 +108,16 @@ nest.Connect(down_ebn, spike_detector_down)
 # simulate
 nest.Simulate(stim_time + 400.)
 
-#
 spike_times_left = nest.GetStatus(spike_detector_left, 'events')[0]
 spike_times_right = nest.GetStatus(spike_detector_right, 'events')[0]
 spike_times_up = nest.GetStatus(spike_detector_up, 'events')[0]
 spike_times_down = nest.GetStatus(spike_detector_down, 'events')[0]
 
 # obtain saccade size
-saccade_size_left = saccadic_size_single_side([stim_time], spike_times_left)
-saccade_size_right = saccadic_size_single_side([stim_time], spike_times_right)
-saccade_size_up = saccadic_size_single_side([stim_time], spike_times_up)
-saccade_size_down = saccadic_size_single_side([stim_time], spike_times_down)
+saccade_size_left = saccadic_size_single_side([stim_time], spike_times_left, 1.3)
+saccade_size_right = saccadic_size_single_side([stim_time], spike_times_right, 1.3)
+saccade_size_up = saccadic_size_single_side([stim_time], spike_times_up, 1.3)
+saccade_size_down = saccadic_size_single_side([stim_time], spike_times_down, 1.3)
 
 saccade_displacement_x = saccade_size_right - saccade_size_left
 saccade_displacement_y = saccade_size_up - saccade_size_down
@@ -129,7 +128,7 @@ The stimulus strength provided to the saccade generator to produce a saccade of 
 This normed value then can be used to determine the amplitude of the dc current.  
 The spikes of the EBN are counted in a time window of 200 ms after the sitmulus onset. Using this data, one calculates the population averaged firing rate and from this
 may obtain the relative size of the saccade. To get the actual size, the produced values needs to be scaled by the maximal saccade size.  
-For more information see the evaluation scripts **saccade_generator_eval.py** and **saccade_generator_single_side_eval.py** as well as **saccadic_size_single_side.py**.
+For more information see the evaluation scripts **saccade_generator_eval.py** and **saccade_generator_single_side_eval.py** as well as **i_o_scripts** in ./helpers.
 
 ## Requirements
 See environment.yml.

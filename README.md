@@ -9,7 +9,7 @@ The four populations are long-lead burst neurons (LLBN), short-lead burst neuron
 Electrophysiological studies show, that in the time between two saccades the OPN fire regularly and inhibit the EBN. Upon initiation of the saccade generation
 process started by a signal to LLBN encoding the desired displacement of the saccadic jump, the LLBN inhibit the OPN and excite the EBN.
 Due to the disinhibition of the EBN via the OPN and the direct excitation, the EBN themselves begin to burst. The activity of the EBN is not only passed to the motor neurons
-but also directed to the IBN, which upon activation inhibit the LLBN. Due to the absence of inhibition the OPN become active again and deactivate the EBN.
+but also directed to the IBN, which in turn inhibit the LLBN. Due to the absence of inhibition the OPN become active again and deactivate the EBN.
 This leads to a reset of the circuit to a state qualitatively identical to the initial one.  
 The interconnections between the four populations are schematically depicted below:  
 ![](figures/burst_generator.png)  
@@ -22,10 +22,10 @@ The OPN consist of two interconnected populations of excitatory and inhibitory l
 The IBN consist of one interconnected population of inhibitory multi-timescale adaptive threshold neurons again showing bursty behaviour.
 The provided network satisfies Dale's principle and qualitatively takes different neuron characteristics (the distinction between bursting
 and non-bursting neurons) found in the reticular formation into account.
-Our model differs from the one described by Gancarz and Grossberg in the respect that they model the saccade generator with neural populations, i.e. they represent the network with a system of coupled differential equations where each populations is described via on of these equation.
+Our model differs from the one described by Gancarz and Grossberg in the respect that they model the saccade generator with neural populations, i.e. they represent the network with a system of coupled differential equations where each population is described via on of these equations.
 Our network, however, is more biologically plausible since it operates with spiking neurons which not only satisfy Dale's principle
 but also exhibit bursty dynamics, motivated by the neurons found in the saccade generator.
-All simulations were carried out with NEST 2.18 using the pynest interface (Jordan, Jakob et al. (2019). NEST 2.18.0. Zenodo. 10.5281/zenodo.2605422.).
+All simulations were carried out with NEST 2.18 using the PyNest interface (Jordan, Jakob et al. (2019). NEST 2.18.0. Zenodo. 10.5281/zenodo.2605422.).
 ## Results
 The constructed network exhibits reset property described above if provided with sustained input.  
 ![](figures/response_saccade_generator_populations.png)  
@@ -37,11 +37,10 @@ Building a complete saccade generator, one obtains the following:
 This shows the functionality of our spiking network model of the saccade generator.
 
 ## Usage
-In order to use the saccade generator one needs to first add the base directory to ones PYTHONPATH. If one in the base directory of the spiking saccade generator (on a unixoid system), one just needs to execute
+In order to use the saccade generator one needs to first add the base directory to ones PYTHONPATH. If one is in the base directory of the spiking saccade generator, one just needs to execute the following (on a unixoid system):
 ```
 export PYTHONPATH=$PWD:$PYTHONPATH
-```
-in the console.  
+``` 
 Setting up the spiking saccade generator works as follows:
 ```
 from saccade_generator import construct_saccade_generator

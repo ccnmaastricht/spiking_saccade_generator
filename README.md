@@ -17,7 +17,7 @@ This fundamental building block takes responsibility for the movement of the eye
 To build a complete saccade generator, one first patches together two of these fundamental building blocks collapsing the two OPN populations into one, thereby obtaining a saccade generator
 for either horizontal or vertical saccades. For the second axis, one just duplicates this circuit.
 In the model, the LLBN and the SLBN consist of two interconnected populations of excitatory and inhibitory multi-timescale adaptive threshold model neurons ( see *Made-to-order spiking neuron model equipped with a multi-timescale adaptive threshold* by Kobayashi et al., Frontiers in Computational Neuroscience 09) exhibiting bursty behaviour.
-We will call the excitatory population of SLBN EBN for simplicity sake.
+We will call the excitatory population of SLBN EBN for the sake of simplicity. This activity of this subpopulation determines the size the saccades.
 The OPN consist of two interconnected populations of excitatory and inhibitory leaky integrate-and-fire neurons.
 The IBN consist of one interconnected population of inhibitory multi-timescale adaptive threshold neurons again showing bursty behaviour.
 The provided network satisfies Dale's principle and qualitatively takes different neuron characteristics (the distinction between bursting

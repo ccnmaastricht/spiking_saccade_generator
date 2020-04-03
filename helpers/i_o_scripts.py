@@ -1,7 +1,39 @@
-from population_parameters import EBN_parameters
+'''
+Scripts providing methods to determine input and output
+'''
 import numpy as np
 
-def saccadic_size_single_side(stim_times, spike_times, scale = 1):
+def stim_amp(saccade_size, maximal_saccade_size = 1):
+    '''
+    Determine stimulus amplitude to be provided to LLBN
+
+    Parameters
+    ----------
+    saccade_size : float
+        size of saccade to be performed
+
+    maximal_saccade_size : float
+        maximal size of saccades to be performed
+
+    Returns
+    -------
+
+    stim_amplitude : float
+        amplitude in pA to be provided to LLBN
+    '''
+    min_stim_strength = 300.0
+    max_stim_strength = 960.0
+
+    diff_stim_strength = max_stim_strength - min_stim_strength
+
+    saccade_size_norm = saccade_size/maximal_saccade_size
+
+    stim_ampltiude = saccade_size_norm*diff_stim_strength + min_stim_strength
+
+    return float(stim_ampltiude)
+
+
+def saccadic_size_single_side(stim_times, spike_times, maximal_saccade_size = 1):
     '''
     Determine size of saccade upon stimulation of saccade generator
 
@@ -13,7 +45,7 @@ def saccadic_size_single_side(stim_times, spike_times, scale = 1):
     spike_times : np.array
         array of spike times of EBNs
 
-    scale : float
+    maximal_saccade_size : float
         determine size of ouput
 
     Return
@@ -42,7 +74,7 @@ def saccadic_size_single_side(stim_times, spike_times, scale = 1):
 
         return dist
 
-    size_EBN = EBN_parameters['n_ex']
+    size_EBN = 80.
 
     saccades_sizes = []
 
@@ -56,7 +88,7 @@ def saccadic_size_single_side(stim_times, spike_times, scale = 1):
 
         saccadic_size = dist(stim(rate))
 
-        saccades_sizes.append(saccadic_size)
+        saccades_sizes.append(maximal_saccade_size*saccadic_size)
 
     return np.asarray(saccades_sizes)
 

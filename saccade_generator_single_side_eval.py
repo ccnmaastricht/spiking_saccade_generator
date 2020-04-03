@@ -1,5 +1,6 @@
 from saccade_generator_single_side import saccade_generator_single_side
-from saccadic_size_single_side import saccadic_size_single_side
+from helpers.i_o_scripts import saccadic_size_single_side
+from helpers.i_o_scripts import stim_amp
 
 import nest
 import numpy as np
@@ -9,11 +10,6 @@ from matplotlib import pyplot as plt
 Test functionality of saccade generator for eye movement in single direction
 '''
 
-# fix some global parameters
-min_stim_strength = 300.0
-max_stim_strength = 960.0
-
-diff_stim_strength = max_stim_strength - min_stim_strength
 
 N_vp = 2
 msd = 1234
@@ -27,7 +23,7 @@ stim_sizes = np.asarray([0.43, 0.61, 0.52, 0.12, 0.3, 0., 0.5, 0.7, 0.1, 0.4,
 # determine stimulus amplitudes
 num_stims = len(stim_times)
 
-stim_amplitudes = [(stim_sizes[i]*diff_stim_strength + min_stim_strength) for i in
+stim_amplitudes = [stim_amp(stim_sizes[i], 1.) for i in
                    range(num_stims)]
 
 stim_duration = 75.

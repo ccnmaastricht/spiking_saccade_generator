@@ -1,4 +1,7 @@
-from single_neuron_parameters import *
+'''
+Parameters of population of spiking saccade genrator
+'''
+from parameters.single_neuron_parameters import *
 from copy import deepcopy as deep
 
 weight = 0.6*1e1
@@ -49,11 +52,11 @@ connection_ebn_in['conn_spec']['p'] = 0.7
 connection_params_ebn = {'ex' : connection_ebn_ex,
                          'in' : connection_ebn_in}
 
-EBN_parameters = {'n_ex' : 80, #95
+EBN_parameters = {'n_ex' : 80,
                   'n_in' : 250,
                   'neuron_model' : 'mat2_psc_exp',
                   'single_neuron_params' : mat2_burst_params,
-                  'noise' : 75., #45.,
+                  'noise' : 75.,
                   'connection_params': connection_params_ebn}
 
 

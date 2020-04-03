@@ -1,6 +1,6 @@
-from network_helper import create_population
-from population_parameters import *
-from single_neuron_parameters import *
+from helpers.network_helper import create_population
+from parameters.population_parameters import *
+from parameters.single_neuron_parameters import *
 
 import nest
 import numpy as np

@@ -133,7 +133,7 @@ To get the actual size, the produced values need to be scaled by the maximal sac
 For more information see the evaluation scripts **saccade_generator_eval.py** and **saccade_generator_single_side_eval.py** as well as **i_o_scripts** in ./helpers.
 
 ## Requirements
-See environment.yml.
+See environment.yml for used Python packages. We used NEST 2.18.0 as simulation engine.
 
 ## Contributors
 Code written by Anno Kurth with support from Sacha van Albada.

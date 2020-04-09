@@ -139,7 +139,6 @@ Code written by Anno Kurth with support from Sacha van Albada.
 
 ## License
 CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/, see License.md).
-Also see the contributors license agreement (Contributors_license_agreement.md).
 
 ## Acknowledgments
 This work was supported by the European Union Horizon 2020 research and innovation program (Grant 737691, Human Brain Project SGA2).

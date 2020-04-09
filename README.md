@@ -5,8 +5,7 @@ This repository contains an implementation of a spiking neural network model of 
 
 The spiking neural network consists of four recurrently connected populations of spiking neurons which are interconnected in a population-specific manner (see figure). 
 These populations correspond to populations of neurons found in the reticular formation exhibiting similar responses in electrophysiological experiments (see, e.g., *The brainstem burst generator for saccadic eye movements* by Scudder et al., Exp Brain Res, 2002, for a review) and are believed to play different roles in the saccade generation process. 
-The four populations are long-lead burst neurons (LLBN), excitatory and inhibitory burst neurons (EBN, IBN), and omni-pause neurons (OPN). 
-The EBN and IBN together form a population of short-lead burst neurons (SLBN).
+The four populations are long-lead burst neurons (LLBN), short-lead burst neurons (SLBN; in turn consisting of recurrently connected excitatory and inhibitory burst neurons), a separate population of inhibitory burst neurons (IBN), and omni-pause neurons (OPN). We refer to the excitatory subpopulation of the SLBN as EBN (excitatory burst neurons).
 
 Electrophysiological studies show that in the time between two saccades the OPN fire regularly and inhibit the EBN. 
 Upon initiation of the saccade generation process by a signal to LLBN encoding the desired displacement of the saccadic jump, the LLBN inhibit the OPN and excite the EBN. 

@@ -1,5 +1,7 @@
 '''
 Single neuron parameters for lif and mat2 neuron models
+
+:license: CC BY-NC-SA 4.0, see LICENSE.md
 '''
 mat2_burst_params = {'tau_m' : 10.,
                      't_ref' : 2.,

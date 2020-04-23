@@ -1,5 +1,8 @@
 '''
 Scripts providing methods to determine input and output
+
+:license: CC BY-NC-SA 4.0, see LICENSE.md
+"""
 '''
 import numpy as np
 

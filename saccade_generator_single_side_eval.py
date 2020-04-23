@@ -1,3 +1,10 @@
+'''
+Evaluate performance of saccade generator controlling eye-movement of single
+for one direction (e.g. left or right)
+
+:license: CC BY-NC-SA 4.0, see LICENSE.md
+'''
+
 from saccade_generator_single_side import saccade_generator_single_side
 from helpers.i_o_scripts import saccadic_size_single_side
 from helpers.i_o_scripts import stim_amp

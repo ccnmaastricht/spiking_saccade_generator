@@ -1,3 +1,9 @@
+'''
+Construct saccade generator for horizontal and vertical eye movement
+
+:license: CC BY-NC-SA 4.0, see LICENSE.md
+'''
+
 from saccade_generator_single_side import saccade_generator_single_side
 
 def construct_saccade_generator( ):

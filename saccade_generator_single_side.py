@@ -1,3 +1,10 @@
+'''
+Constrcut saccade generator for eye-movement in on direction (i.e. left or
+right)
+
+:license: CC BY-NC-SA 4.0, see LICENSE.md
+'''
+
 from helpers.network_helper import create_population
 from parameters.population_parameters import *
 from parameters.single_neuron_parameters import *

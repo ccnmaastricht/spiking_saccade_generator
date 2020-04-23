@@ -1,3 +1,9 @@
+'''
+Evaluate performance of saccde generator
+
+:license: CC BY-NC-SA 4.0, see LICENSE.md
+'''
+
 from saccade_generator import construct_saccade_generator
 from helpers.i_o_scripts import stim_amp, saccadic_size_single_side
 

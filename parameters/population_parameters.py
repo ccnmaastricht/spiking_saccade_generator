@@ -1,5 +1,7 @@
 '''
 Parameters of population of spiking saccade genrator
+
+:license: CC BY-NC-SA 4.0, see LICENSE.md
 '''
 from parameters.single_neuron_parameters import *
 from copy import deepcopy as deep

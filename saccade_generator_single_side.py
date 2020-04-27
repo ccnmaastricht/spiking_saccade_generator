@@ -38,6 +38,7 @@ def saccade_generator_single_side(OPN = None):
         gids of neurons in population OPN
     '''
 
+    # Create populations constituing saccade generator
     LLBN_e, LLBN_i = create_population(**LLBN_parameters)
     LLBN = LLBN_e + LLBN_i
 
@@ -54,6 +55,7 @@ def saccade_generator_single_side(OPN = None):
         OPN_e = OPN[:OPN_parameters['n_ex']]
         OPN_i = OPN[OPN_parameters['n_ex']:]
 
+    # Connect respective populations to recurrent neural network
     nest.Connect(LLBN_e, SLBN, connection_llbn_slbn['conn_spec'],
                  connection_llbn_slbn['syn_spec'])
     nest.Connect(LLBN_i, OPN, connection_llbn_opn['conn_spec'],

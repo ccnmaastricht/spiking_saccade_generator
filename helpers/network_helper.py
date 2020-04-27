@@ -37,6 +37,11 @@ def create_population(n_ex, n_in, neuron_model, single_neuron_params,
         nest-gids of neurons in inhibitory population
     '''
 
+    assert type(n_ex)==int , 'Number of excitatory neurons must be int'
+    assert type(n_in)==int , 'Number of excitatory neurons must be int'
+    assert type(noise)==float, 'Value of noise must be float'
+
+    # Create neuron population and noise generator
     if n_ex > 0:
         neurons_ex = nest.Create(neuron_model, n_ex, single_neuron_params)
     else :
@@ -55,6 +60,7 @@ def create_population(n_ex, n_in, neuron_model, single_neuron_params,
     connectivity_ex = connection_params['ex']
     connectivity_in = connection_params['in']
 
+    # Connect neurons and noise
     nest.Connect(neurons_ex, neurons, connectivity_ex['conn_spec'],
                  connectivity_ex['syn_spec'])
     nest.Connect(neurons_in, neurons, connectivity_in['conn_spec'],

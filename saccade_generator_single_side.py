@@ -14,7 +14,7 @@ import numpy as np
 
 def saccade_generator_single_side(OPN = None):
     '''
-    Construct model network of saccade genertor for control of a single
+    Construct model network of saccade generator for control of a single
     extraocular muscle
 
     Parameters

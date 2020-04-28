@@ -42,95 +42,8 @@ Building a complete saccade generator, one obtains the following:
 In order to use the saccade generator one needs to first add the base directory to one's PYTHONPATH. If one is in the base directory of the spiking saccade generator, one just needs to execute the following (on a Unix-like system):
 ```
 export PYTHONPATH=$PWD:$PYTHONPATH
-``` 
-Setting up the spiking saccade generator works as follows:
 ```
-from saccade_generator import construct_saccade_generator
-from helpers.i_o_scripts import stim_amp, saccadic_size_single_side
-import nest
-
-sg = construct_saccade_generator()
-
-# fetch horizontal and vertical saccade generators
-horizontal_sg = sg['horizontal']
-vertical_sg = sg['vertical']
-
-# fetch compartments controlling one extraocular muscle
-
-# input populations
-left_llbn = horizontal_sg['LLBN_l']
-right_llbn = horizontal_sg['LLBN_r']
-up_llbn = vertical_sg['LLBN_u']
-down_llbn = vertical_sg['LLBN_d']
-
-# output populations
-left_ebn = horizontal_sg['EBN_l']
-right_ebn = horizontal_sg['EBN_r']
-up_ebn = vertical_sg['EBN_u']
-down_ebn = vertical_sg['EBN_d']
-```
-In order to perform a saccade from the point (0,0) to (0.7,-0.2), where the maximal saccade size is 1.3, one needs to first provide the saccade generator with the proper input and then determine the readout from the recorded activity of the EBN:
-```
-# determine amplitude size of stimulation
-amplitude_right = stim_amp(0.7, 1.3)
-amplitude_down = stim_amp(0.2, 1.3)
-
-# define start time and duration of stimulation
-stim_time = 2000.
-stim_duration = 75.
-
-# create stimuli
-dc_generator_right = nest.Create('dc_generator', 1)
-dc_generator_up = nest.Create('dc_generator',1)
-
-nest.SetStatus(dc_generator_right, {'amplitude' : stim_amp,
-				    'start' : stim_time,
-				    'stop' : stim_time + stim_duration}
-
-nest.SetStatus(dc_generator_down, {'amplitude' : stim_amp,
-				 'start' : stim_time,
-				 'stop' : stim_time + stim_duration}
-
-# create recording devices
-spike_detector_right = nest.Create('spike_detector', 1)
-spike_detector_left = nest.Create('spike_detector', 1)
-spike_detector_up = nest.Create('spike_detector', 1)
-spike_detector_down = nest.Create('spike_detector', 1)
-
-# connect devices
-nest.Connect(dc_generator_right, right_llbn)
-nest.Connect(dc_generator_down, up_llbn)
-
-nest.Connect(left_ebn, spike_detector_left)
-nest.Connect(right_ebn, spike_detector_right)
-nest.Connect(up_ebn, spike_detector_up)
-nest.Connect(down_ebn, spike_detector_down)
-
-# simulate
-nest.Simulate(stim_time + 400.)
-
-spike_times_left = nest.GetStatus(spike_detector_left, 'events')[0]
-spike_times_right = nest.GetStatus(spike_detector_right, 'events')[0]
-spike_times_up = nest.GetStatus(spike_detector_up, 'events')[0]
-spike_times_down = nest.GetStatus(spike_detector_down, 'events')[0]
-
-# obtain saccade size
-saccade_size_left = saccadic_size_single_side([stim_time], spike_times_left, 1.3)
-saccade_size_right = saccadic_size_single_side([stim_time], spike_times_right, 1.3)
-saccade_size_up = saccadic_size_single_side([stim_time], spike_times_up, 1.3)
-saccade_size_down = saccadic_size_single_side([stim_time], spike_times_down, 1.3)
-
-saccade_displacement_x = saccade_size_right - saccade_size_left
-saccade_displacement_y = saccade_size_up - saccade_size_down
-```
-For a more detailed description see the documentation in the code.  
-To elicit a saccade, say, to the left one needs to provide the left LLBN with a DC input for 75 ms.  
-The stimulus strength provided to the saccade generator to produce a saccade of a given size needs to be first normed by the maximal saccade size.  
-This normed value then can be used to determine the amplitude of the direct current.  
-The spikes of the EBN are counted in a time window of 200 ms after the sitmulus onset. Using this data, one calculates the population-averaged firing rate and from this may obtain the relative size of the saccade. 
-To get the actual size, the produced values need to be scaled by the maximal saccade size.  
-For more information see the evaluation scripts **saccade_generator_eval.py** and **saccade_generator_single_side_eval.py** as well as **i_o_scripts** in ./helpers.
-
+See **example.py** in /examples for a step by step introduction to the usage, also see the evaluations scripts in /examples/evaluation.
 ## Requirements
 See environment.yml for used Python packages. We used NEST 2.18.0 as simulation engine.
 
@@ -142,3 +55,7 @@ CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/, see License
 
 ## Acknowledgments
 This work was supported by the European Union Horizon 2020 research and innovation program (Grant 737691, Human Brain Project SGA2).
+## Sources
+Gancarz, Gregory, and Stephen Grossberg. "A neural model of the saccade generator in the reticular formation." Neural Networks 11.7-8 (1998): 1159-1174.  
+Scudder, Charles A., Chris R. Kaneko, and Albert F. Fuchs. "The brainstem burst generator for saccadic eye movements." Experimental brain research 142.4 (2002): 439-462.  
+Kobayashi, Ryota, Yasuhiro Tsubo, and Shigeru Shinomoto. "Made-to-order spiking neuron model equipped with a multi-timescale adaptive threshold." Frontiers in computational neuroscience 3 (2009): 9.

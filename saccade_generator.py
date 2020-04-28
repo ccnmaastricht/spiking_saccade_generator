@@ -8,32 +8,14 @@ from saccade_generator_single_side import saccade_generator_single_side
 
 def construct_saccade_generator( ):
     '''
-    Construct model network of saccade genertor for control of two
+    Construct model network of saccade generator for control of two
     extraocular muscles
 
     Returns
     -------
+    saccade_generator : dict
+        dictionary containing two single side saccade generators
 
-    LLBN_l : tuple
-        gids of neurons in left population LLBN
-
-    EBN_l : tuple
-        gids of neurons in left population EBN
-
-    IBN_l : tuple
-        gids of neurons in left population IBN
-
-    LLBN_r : tuple
-        gids of neurons in right population LLBN
-
-    EBN_r : tuple
-        gids of neurons in right population EBN
-
-    IBN_r : tuple
-        gids of neurons in right population IBN
-
-    OPN: tuple
-        gids of neurons in population OPN
     '''
 
     '''

@@ -52,7 +52,7 @@ Code written by Anno Kurth with support from Sacha van Albada.
 
 ## License
 CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/, see License.md).
-## Sources
+## References
 Gancarz, Gregory, and Stephen Grossberg. "A neural model of the saccade generator in the reticular formation." Neural Networks 11.7-8 (1998): 1159-1174.  
 Scudder, Charles A., Chris R. Kaneko, and Albert F. Fuchs. "The brainstem burst generator for saccadic eye movements." Experimental brain research 142.4 (2002): 439-462.  
 Kobayashi, Ryota, Yasuhiro Tsubo, and Shigeru Shinomoto. "Made-to-order spiking neuron model equipped with a multi-timescale adaptive threshold." Frontiers in computational neuroscience 3 (2009): 9.

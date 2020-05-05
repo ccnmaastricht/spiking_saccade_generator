@@ -48,12 +48,15 @@ See **example.py** in /examples for a step by step introduction to the usage, al
 See environment.yml for used Python packages. We used NEST 2.18.0 as simulation engine.
 
 ## Contributors
-Code written by Anno Kurth<sup>a, b, c</sup> with support from Sacha van Albadasup>a, b, c, d</sup>.
+Code written by Anno Kurth<sup>a, b, c</sup> with support from Sacha van Albada<sup>a, b, c, d</sup>.
 
-a) Institute of Neuroscience and Medicine (INM-6), Jülich Research Centre, Jülich, Germany
-b) Institute for Advanced Simulation (IAS-6), Jülich Research Centre, Jülich, Germany
-c) ARA-Institute Brain Structure-Function Relationships (INM-10), Jülich Research Centre, 	Jülich, Germany
-d) Institute of Zoology, Faculty of Mathematics and Natural Sciences, University of Cologne, Cologne, Germany
+**a)** Institute of Neuroscience and Medicine (INM-6), Jülich Research Centre, Jülich, Germany
+
+**b)** Institute for Advanced Simulation (IAS-6), Jülich Research Centre, Jülich, Germany
+
+**c)** ARA-Institute Brain Structure-Function Relationships (INM-10), Jülich Research Centre, 	Jülich, Germany
+
+**d)** Institute of Zoology, Faculty of Mathematics and Natural Sciences, University of Cologne, Cologne, Germany
 
 ## License
 CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/, see License.md).
